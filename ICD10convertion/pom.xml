@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ICD10convertion</groupId>
+  <artifactId>ICD10convertion</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	    <dependency>
+	      <groupId>com.aol.pubt</groupId>
+	      <artifactId>forc</artifactId>
+	      <version>1.3</version>
+	    </dependency>	
+	    <dependency>
+	      <groupId>com.aol.pubt</groupId>
+	      <artifactId>solrbeans</artifactId>
+	      <version>1.3</version>
+	    </dependency>	    
+	   	<dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>apache-solr-solrj</artifactId>
+            <version>1.3.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>apache-solr-common</artifactId>
+            <version>1.3.0-SNAPSHOT</version>
+        </dependency>
+  	<dependency>
+  		<groupId>org.slf4j</groupId>
+  		<artifactId>slf4j-jcl</artifactId>
+  		<version>1.5.2</version>
+  	</dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="title">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="ICD-10-CM TABULAR LIST of DISEASES and INJURIES"/>
+        <xs:enumeration value="Instructional Notations"/>
+        <xs:enumeration value="Includes:"/>
+        <xs:enumeration value="Excludes Notes"/>
+        <xs:enumeration value="Excludes1"/>
+        <xs:enumeration value="Excludes2"/>
+        <xs:enumeration value="Code First/Use Additional Code notes (etiology/manifestation paired codes)"/>
+        <xs:enumeration value="Code Also"/>
+        <xs:enumeration value="7th characters and placeholder X"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="note">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="char" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="instruction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="introSection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="title"/>
+        <xs:element ref="instruction" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="type" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sectionRef">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="first" use="optional"/>
+          <xs:attribute type="xs:string" name="last" use="optional"/>
+          <xs:attribute type="xs:string" name="id" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="desc" type="xs:string"/>
+  <xs:element name="inclusionTerm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="diag">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="name"/>
+        <xs:element ref="desc"/>
+        <xs:element ref="inclusionTerm"/>
+        <xs:element ref="diag"/>
+        <xs:element ref="excludes1"/>
+        <xs:element ref="excludes2"/>
+        <xs:element ref="includes"/>
+        <xs:element ref="useAdditionalCode"/>
+        <xs:element ref="codeFirst"/>
+        <xs:element ref="notes"/>
+        <xs:element ref="codeAlso"/>
+        <xs:element ref="sevenChrNote"/>
+        <xs:element ref="sevenChrDef"/>
+        <xs:element ref="visualImpairment"/>
+      </xs:choice>
+      <xs:attribute type="xs:string" name="placeholder" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="includes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="excludes1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="excludes2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="codeFirst">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="useAdditionalCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="notes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sectionIndex">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="sectionRef" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="note" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="section">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="desc"/>
+        <xs:element ref="diag"/>
+        <xs:element ref="includes"/>
+        <xs:element ref="excludes1"/>
+        <xs:element ref="excludes2"/>
+        <xs:element ref="notes"/>
+        <xs:element ref="codeFirst"/>
+        <xs:element ref="useAdditionalCode"/>
+        <xs:element ref="codeAlso"/>
+        <xs:element ref="inclusionTerm"/>
+      </xs:choice>
+      <xs:attribute type="xs:string" name="id" use="optional"/>
+      <xs:attribute type="xs:string" name="oldid" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="codeAlso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="extension">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="char" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sevenChrNote">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sevenChrDef">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="extension"/>
+        <xs:element ref="note"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="heading">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="Maximum less than:"/>
+        <xs:enumeration value="Minimum equal to or better than:"/>
+        <xs:enumeration value="Visual acuity with best possible correction"/>
+        <xs:enumeration value="Category of visual impairment"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="visMax">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="heading" minOccurs="0"/>
+        <xs:element ref="value" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="visMin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="heading" minOccurs="0"/>
+        <xs:element ref="value" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="visRange">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="heading" minOccurs="0"/>
+        <xs:element ref="visMax"/>
+        <xs:element ref="visMin" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="value" type="xs:string"/>
+  <xs:element name="visCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="heading" minOccurs="0"/>
+        <xs:element ref="value" minOccurs="0"/>
+        <xs:element ref="visRange" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="visualImpairment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="visCategory" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="version" type="xs:byte"/>
+  <xs:element name="introduction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="introSection" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="chapter">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="name"/>
+        <xs:element ref="desc"/>
+        <xs:element ref="includes"/>
+        <xs:element ref="useAdditionalCode"/>
+        <xs:element ref="excludes1"/>
+        <xs:element ref="excludes2"/>
+        <xs:element ref="sectionIndex"/>
+        <xs:element ref="notes"/>
+        <xs:element ref="section"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ICD10CM.tabular">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="version"/>
+        <xs:element ref="introduction"/>
+        <xs:element ref="chapter" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

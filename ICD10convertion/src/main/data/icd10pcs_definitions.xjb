@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" 
+          xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" 
+          xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+          version="2.1"> 
+    <bindings schemaLocation="icd10pcs_definitions.xsd" version="1.0"> 
+        <!-- Customise the package name --> 
+        <schemaBindings> 
+            <package name="icd10.pcs.definition"/> 
+        </schemaBindings> 
+ 
+        <!-- rename the value element --> 
+        <bindings node="//xs:element[@name='parent']"> 
+            <bindings node=".//xs:attribute[@name='value']"> 
+                <property name="valueAttribute"/> 
+            </bindings> 
+        </bindings> 
+    </bindings> 
+</bindings> 

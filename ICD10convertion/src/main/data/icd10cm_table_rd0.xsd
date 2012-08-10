@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ICD10CM.tabular">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:byte" name="version"/>
+        <xs:element name="introduction">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="introSection" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="title">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="ICD-10-CM TABULAR LIST of DISEASES and INJURIES"/>
+                          <xs:enumeration value="Instructional Notations"/>
+                          <xs:enumeration value="Includes:"/>
+                          <xs:enumeration value="Excludes Notes"/>
+                          <xs:enumeration value="Excludes1"/>
+                          <xs:enumeration value="Excludes2"/>
+                          <xs:enumeration value="Code First/Use Additional Code notes (etiology/manifestation paired codes)"/>
+                          <xs:enumeration value="Code Also"/>
+                          <xs:enumeration value="7th characters and placeholder X"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="instruction" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="note" maxOccurs="unbounded" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="The word 'Includes' appears immediately under certain categories to further define, or give examples of, the content of the category."/>
+                                <xs:enumeration value="The ICD-10-CM has two types of excludes notes.  Each note has a different definition for use but they are both similar in that they indicate that codes excluded from each other are independent of each other."/>
+                                <xs:enumeration value="A type 1 Excludes note is a pure excludes.  It means 'NOT CODED HERE!'  An Excludes1 note indicates that the code excluded should never be used at the same time as the code above the Excludes1 note.  An Excludes1 is used when two conditions cannot occur together, such as a congenital form versus an acquired form of the same condition."/>
+                                <xs:enumeration value="A type 2 excludes note represents 'Not included here'.  An excludes2 note indicates that the condition excluded is not part of the condition it is excluded from but a patient may have both conditions at the same time.  When an Excludes2 note appears under a code it is acceptable to use both the code and the excluded code together."/>
+                                <xs:enumeration value="Certain conditions have both an underlying etiology and multiple body system manifestations due to the underlying etiology.  For such conditions the ICD-10-CM has a coding convention that requires the underlying condition be sequenced first followed by the manifestation.  Wherever such a combination exists there is a 'use additional code' note at the etiology code, and a 'code first' note at the manifestation code.  These instructional notes indicate the proper sequencing order of the codes, etiology followed by manifestation."/>
+                                <xs:enumeration value="In most cases the manifestation codes will have in the code title, 'in diseases classified elsewhere.'  Codes with this title are a component of the etiology/ manifestation convention. The code title indicates that it is a manifestation code.  'In diseases classified elsewhere' codes are never permitted to be used as first listed or principal diagnosis codes. They must be used in conjunction with an underlying condition code and they must be listed following the underlying condition."/>
+                                <xs:enumeration value="A code also note instructs that 2 codes may be required to fully describe a condition but the sequencing of the two codes is discretionary, depending on the severity of the conditions and the reason for the encounter."/>
+                                <xs:enumeration value="For codes less than 6 characters that require a 7th character a placeholder X should be assigned for all characters less than 6.  The 7th character must always be the 7th character of a code"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="type" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="chapter" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+              <xs:element type="xs:byte" name="name"/>
+              <xs:element type="xs:string" name="desc"/>
+              <xs:element name="includes">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="note">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="diseases generally recognized as communicable or transmissible"/>
+                          <xs:enumeration value="disorders of psychological development"/>
+                          <xs:enumeration value="conditions that have their origin in the fetal or perinatal period (before birth through the first 28 days after birth) even if morbidity occurs later"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="useAdditionalCode">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="note" maxOccurs="unbounded" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="code to identify resistance to antimicrobial drugs (Z16-)"/>
+                          <xs:enumeration value="code, where applicable, to identify:"/>
+                          <xs:enumeration value="exposure to environmental tobacco smoke (Z77.22)"/>
+                          <xs:enumeration value="exposure to tobacco smoke in the perinatal period (P96.81)"/>
+                          <xs:enumeration value="history of tobacco use (Z87.891)"/>
+                          <xs:enumeration value="occupational exposure to environmental tobacco smoke (Z57.31)"/>
+                          <xs:enumeration value="tobacco dependence (F17.-)"/>
+                          <xs:enumeration value="tobacco use (Z72.0)"/>
+                          <xs:enumeration value="code from category Z3A, Weeks of gestation, to identify the specific week of the pregnancy"/>
+                          <xs:enumeration value="code to identify any retained foreign body, if applicable (Z18.-)"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="excludes1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="note" maxOccurs="unbounded" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="certain localized infections - see body system-related chapters"/>
+                          <xs:enumeration value="infectious and parasitic diseases complicating pregnancy, childbirth and the puerperium (O98.-)"/>
+                          <xs:enumeration value="influenza and other acute respiratory infections (J00-J22)"/>
+                          <xs:enumeration value="transitory endocrine and metabolic disorders specific to newborn (P70-P74)"/>
+                          <xs:enumeration value="supervision of normal pregnancy (Z34.-)"/>
+                          <xs:enumeration value="inborn errors of metabolism (E70-E88)"/>
+                          <xs:enumeration value="birth trauma (P10-P15)"/>
+                          <xs:enumeration value="obstetric trauma (O70-O71)"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="excludes2">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="sectionIndex">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="sectionRef" maxOccurs="unbounded" minOccurs="0">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:string" name="first" use="optional"/>
+                            <xs:attribute type="xs:string" name="last" use="optional"/>
+                            <xs:attribute type="xs:string" name="id" use="optional"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="note" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="notes">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="section">
+                <xs:complexType>
+                  <xs:choice maxOccurs="unbounded" minOccurs="0">
+                    <xs:element type="xs:string" name="desc"/>
+                    <xs:element name="diag">
+                      <xs:complexType>
+                        <xs:choice maxOccurs="unbounded" minOccurs="0">
+                          <xs:element type="xs:string" name="name"/>
+                          <xs:element type="xs:string" name="desc"/>
+                          <xs:element name="includes">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="inclusionTerm">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="codeFirst">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="excludes1">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="excludes2">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="diag">
+                            <xs:complexType>
+                              <xs:choice maxOccurs="unbounded" minOccurs="0">
+                                <xs:element type="xs:string" name="name"/>
+                                <xs:element type="xs:string" name="desc"/>
+                                <xs:element name="inclusionTerm">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="diag">
+                                  <xs:complexType>
+                                    <xs:choice maxOccurs="unbounded" minOccurs="0">
+                                      <xs:element type="xs:string" name="name"/>
+                                      <xs:element type="xs:string" name="desc"/>
+                                      <xs:element name="excludes2">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="diag">
+                                        <xs:complexType>
+                                          <xs:choice maxOccurs="unbounded" minOccurs="0">
+                                            <xs:element type="xs:string" name="name"/>
+                                            <xs:element type="xs:string" name="desc"/>
+                                            <xs:element name="excludes1">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="inclusionTerm">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="excludes2">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="useAdditionalCode">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="note">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="code to identify site of ulcer (L97.4-, L97.5-)"/>
+                                                        <xs:enumeration value="code to identify site of ulcer (L97.1-L97.9, L98.41-L98.49)"/>
+                                                        <xs:enumeration value="code to identify the type of dysphagia, if known (R13.1-)"/>
+                                                        <xs:enumeration value="code to identify the sequelae"/>
+                                                        <xs:enumeration value="code to identify the organism, if known (B95.-, B96.-, B97.-)"/>
+                                                        <xs:enumeration value="cause code to identify the constricting item (W49.0-)"/>
+                                                        <xs:enumeration value="code to identify the joint (Z96.6-)"/>
+                                                        <xs:enumeration value="code to specify infection"/>
+                                                        <xs:enumeration value="code to identify abnormal findings"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="codeFirst">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="note"/>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="codeAlso">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="note" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:string">
+                                                        <xs:enumeration value="allergy status such as:"/>
+                                                        <xs:enumeration value="allergy status to drugs, medicaments and biological substances (Z88.-)"/>
+                                                        <xs:enumeration value="allergy status, other than to drugs and biological substances (Z91.0-)"/>
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:choice>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="inclusionTerm">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="excludes1">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="useAdditionalCode">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="codeFirst">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="codeAlso">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="sevenChrNote">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="note"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="sevenChrDef">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="extension" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute type="xs:string" name="char" use="optional"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="includes">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="note"/>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:choice>
+                                    <xs:attribute type="xs:string" name="placeholder" use="optional"/>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="excludes1">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="excludes2">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="useAdditionalCode">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="codeFirst">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="notes">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="codeAlso">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="sevenChrNote">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="note"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="sevenChrDef">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="extension" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute type="xs:string" name="char" use="optional"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="note" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:simpleType>
+                                          <xs:restriction base="xs:string">
+                                            <xs:enumeration value="Hyoid bone"/>
+                                            <xs:enumeration value="Larynx"/>
+                                            <xs:enumeration value="Thyroid cartilage"/>
+                                            <xs:enumeration value="Trachea"/>
+                                            <xs:enumeration value="Fracture of neck NOS"/>
+                                            <xs:enumeration value="Fracture of cervical spine NOS"/>
+                                            <xs:enumeration value="Fracture of cervical vertebra NOS"/>
+                                          </xs:restriction>
+                                        </xs:simpleType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="visualImpairment">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="visCategory" maxOccurs="unbounded" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element type="xs:string" name="heading" minOccurs="0"/>
+                                            <xs:element name="value" minOccurs="0">
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:byte">
+                                                  <xs:enumeration value="1"/>
+                                                  <xs:enumeration value="2"/>
+                                                  <xs:enumeration value="3"/>
+                                                  <xs:enumeration value="4"/>
+                                                  <xs:enumeration value="5"/>
+                                                  <xs:enumeration value="9"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:element>
+                                            <xs:element name="visRange" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element type="xs:string" name="heading" minOccurs="0"/>
+                                                  <xs:element name="visMax">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:string" name="heading" minOccurs="0"/>
+                                                        <xs:element type="xs:string" name="value" minOccurs="0"/>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="visMin" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element type="xs:string" name="heading" minOccurs="0"/>
+                                                        <xs:element name="value" minOccurs="0">
+                                                          <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                              <xs:enumeration value="6/60"/>
+                                                              <xs:enumeration value="1/10(0.1)"/>
+                                                              <xs:enumeration value="20/200"/>
+                                                              <xs:enumeration value="3/60"/>
+                                                              <xs:enumeration value="1/20(0.05)"/>
+                                                              <xs:enumeration value="20/400"/>
+                                                              <xs:enumeration value="1/60(finger counting at one meter)"/>
+                                                              <xs:enumeration value="1/50(0.02)"/>
+                                                              <xs:enumeration value="5/300(20/1200)"/>
+                                                              <xs:enumeration value="Light perception"/>
+                                                            </xs:restriction>
+                                                          </xs:simpleType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:choice>
+                              <xs:attribute type="xs:string" name="placeholder" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="useAdditionalCode">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="notes">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="codeAlso">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="sevenChrNote">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="note"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="sevenChrDef">
+                            <xs:complexType>
+                              <xs:choice maxOccurs="unbounded" minOccurs="0">
+                                <xs:element name="extension">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="char" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="note">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="char" use="optional"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:choice>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="includes">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="excludes1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="excludes2">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="notes">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="codeFirst">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="note" maxOccurs="unbounded" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="condition resulting from (sequela) the infectious or parasitic disease"/>
+                                <xs:enumeration value="any associated physical or developmental disorders"/>
+                                <xs:enumeration value=", for adverse effects, the nature of the adverse effect, such as:"/>
+                                <xs:enumeration value="adverse effect NOS (T88.7  )"/>
+                                <xs:enumeration value="aspirin gastritis (K29.-)"/>
+                                <xs:enumeration value="blood disorders (D56-D76 )"/>
+                                <xs:enumeration value="contact dermatitis (L23-L25 )"/>
+                                <xs:enumeration value="dermatitis due to substances taken internally (L27.-)"/>
+                                <xs:enumeration value="nephropathy (N14.0-N14.2)"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="useAdditionalCode">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="note" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="codeAlso">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="note">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="any associated kidney failure (N17-N19)."/>
+                                <xs:enumeration value="for any associated infection"/>
+                                <xs:enumeration value="any follow-up examination (Z08-Z09)"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="inclusionTerm">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="note" maxOccurs="unbounded" minOccurs="0">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="Infections acquired in utero, during birth via the umbilicus, or during the first 28 days after birth"/>
+                                <xs:enumeration value="Purposely self-inflicted injury"/>
+                                <xs:enumeration value="Suicide (attempted)"/>
+                                <xs:enumeration value="Undetermined intent is only for use when there is specific documentation in the record that the intent of the injury cannot be determined.  If no such documentation is present, code to accidental (unintentional)"/>
+                                <xs:enumeration value="Categories Z40-Z53 are intended for use to indicate a reason for care. They may be used for patients who have already been treated for a disease or injury, but who are receiving aftercare or prophylactic care, or care to consolidate the treatment, or to deal with a residual state"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:choice>
+                  <xs:attribute type="xs:string" name="id" use="optional"/>
+                  <xs:attribute type="xs:string" name="oldid" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
